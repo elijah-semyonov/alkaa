@@ -1,11 +1,14 @@
 package com.escodro.shared
 
 import androidx.compose.foundation.isSystemInDarkTheme
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import com.escodro.designsystem.AlkaaDarkColorScheme
+import com.escodro.designsystem.AlkaaLightColorScheme
 import com.escodro.designsystem.AlkaaTheme
 import com.escodro.navigation.NavigationAction
 import com.escodro.shared.model.AppThemeOptions
@@ -21,6 +24,10 @@ fun AlkaaMultiplatformApp(
     val isDarkTheme = rememberIsDarkTheme()
     onThemeUpdate(isDarkTheme)
     AlkaaTheme(isDarkTheme = isDarkTheme) {
+        println("isDarkTheme: $isDarkTheme")
+        println("AlkaaLightColorScheme.primary: ${AlkaaLightColorScheme.primary}")
+        println("AlkaaDarkColorScheme.primary: ${AlkaaDarkColorScheme.primary}")
+        println("Resolved MaterialTheme.colors.primary: ${MaterialTheme.colorScheme.primary}")
         AlkaaNavGraph(
             navigationAction = navigationAction,
             modifier = modifier,

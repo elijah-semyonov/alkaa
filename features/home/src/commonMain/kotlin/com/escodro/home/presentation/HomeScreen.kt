@@ -60,6 +60,7 @@ private fun AlkaaHomeScaffold(
     navItems: ImmutableList<HomeSection>,
     setCurrentSection: (HomeSection) -> Unit,
 ) {
+    println("AlkaaHomeScaffold, MaterialTheme.colors.primary: ${MaterialTheme.colorScheme.primary}")
     val appState = rememberAlkaaAppState(windowSizeClass = calculateWindowSizeClass())
     Scaffold(
         topBar = { AlkaaTopBar(currentSection = homeSection) },
@@ -160,7 +161,7 @@ private fun AlkaaBottomNav(
     onSectionSelect: (HomeSection) -> Unit,
     items: ImmutableList<HomeSection>,
 ) {
-    BottomAppBar(containerColor = MaterialTheme.colorScheme.background) {
+    BottomAppBar(containerColor = MaterialTheme.colorScheme.primary) {
         items.forEach { section ->
             val selected = section == currentSection
             val title = section.title

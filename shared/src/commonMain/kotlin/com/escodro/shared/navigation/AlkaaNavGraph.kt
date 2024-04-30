@@ -1,6 +1,7 @@
 package com.escodro.shared.navigation
 
 import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.snapshotFlow
@@ -34,9 +35,14 @@ fun AlkaaNavGraph(
         preferenceScreenModule()
     }
 
+    println("AlkaaNavGraph, MaterialTheme.colors.primary: ${MaterialTheme.colorScheme.primary}")
+
     BottomSheetNavigator(modifier = modifier) {
+        println("AlkaaNavGraph:BottomSheetNavigator, MaterialTheme.colors.primary: ${MaterialTheme.colorScheme.primary}")
+
         closeKeyboardOnBottomSheetDismiss()
         Navigator(screen = HomeScreen()) { navigator ->
+            println("AlkaaNavGraph:BottomSheetNavigator:Navigator, MaterialTheme.colors.primary: ${MaterialTheme.colorScheme.primary}")
             CurrentScreen()
             processNavigationAction(navigator = navigator, action = navigationAction)
         }
