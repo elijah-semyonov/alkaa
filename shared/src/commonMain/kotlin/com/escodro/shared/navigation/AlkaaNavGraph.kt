@@ -1,13 +1,13 @@
 package com.escodro.shared.navigation
 
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.snapshotFlow
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import cafe.adriel.voyager.core.registry.ScreenRegistry
+import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.CurrentScreen
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
@@ -23,6 +23,7 @@ import kotlinx.coroutines.flow.map
 /**
  * Navigation graph of the application.
  */
+
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
 fun AlkaaNavGraph(
@@ -33,16 +34,6 @@ fun AlkaaNavGraph(
         taskScreenModule()
         categoryScreenModule()
         preferenceScreenModule()
-    }
-
-    println("AlkaaNavGraph, MaterialTheme.colors.primary: ${MaterialTheme.colorScheme.primary}")
-
-    BottomSheetNavigator(modifier = modifier) {
-        println("AlkaaNavGraph:BottomSheetNavigator, MaterialTheme.colors.primary: ${MaterialTheme.colorScheme.primary}")
-
-        Navigator(screen = HomeScreen()) { navigator ->
-            println("AlkaaNavGraph:BottomSheetNavigator:Navigator, MaterialTheme.colors.primary: ${MaterialTheme.colorScheme.primary}")
-        }
     }
 }
 
