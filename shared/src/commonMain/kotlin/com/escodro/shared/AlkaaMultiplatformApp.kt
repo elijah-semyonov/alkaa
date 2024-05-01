@@ -21,12 +21,14 @@ fun AlkaaMultiplatformApp(
     modifier: Modifier = Modifier,
     onThemeUpdate: (isDarkTheme: Boolean) -> Unit = {},
 ) {
+    println("AlkaaLightColorScheme.primary: ${AlkaaLightColorScheme.primary}")
+    println("AlkaaDarkColorScheme.primary: ${AlkaaDarkColorScheme.primary}")
+
     val isDarkTheme = rememberIsDarkTheme()
+
     onThemeUpdate(isDarkTheme)
     AlkaaTheme(isDarkTheme = isDarkTheme) {
         println("isDarkTheme: $isDarkTheme")
-        println("AlkaaLightColorScheme.primary: ${AlkaaLightColorScheme.primary}")
-        println("AlkaaDarkColorScheme.primary: ${AlkaaDarkColorScheme.primary}")
         println("Resolved MaterialTheme.colors.primary: ${MaterialTheme.colorScheme.primary}")
         AlkaaNavGraph(
             navigationAction = navigationAction,

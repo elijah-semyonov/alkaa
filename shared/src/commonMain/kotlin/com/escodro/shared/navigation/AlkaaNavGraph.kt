@@ -40,11 +40,8 @@ fun AlkaaNavGraph(
     BottomSheetNavigator(modifier = modifier) {
         println("AlkaaNavGraph:BottomSheetNavigator, MaterialTheme.colors.primary: ${MaterialTheme.colorScheme.primary}")
 
-        closeKeyboardOnBottomSheetDismiss()
         Navigator(screen = HomeScreen()) { navigator ->
             println("AlkaaNavGraph:BottomSheetNavigator:Navigator, MaterialTheme.colors.primary: ${MaterialTheme.colorScheme.primary}")
-            CurrentScreen()
-            processNavigationAction(navigator = navigator, action = navigationAction)
         }
     }
 }
