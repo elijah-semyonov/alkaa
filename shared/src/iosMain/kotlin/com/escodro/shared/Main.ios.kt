@@ -11,36 +11,9 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
 
-enum class DummyTheme {
-    DARK, LIGHT, UNKNOWN
-}
-
-val DummyThemeLocal = compositionLocalOf {
-    DummyTheme.UNKNOWN
-}
-
 
 @OptIn(ExperimentalMaterialApi::class)
 @Suppress("Unused", "FunctionName")
 fun MainViewController() = ComposeUIViewController {
-    println("ComposeUIViewController")
-
-    val theme = if (isSystemInDarkTheme()) DummyTheme.DARK else DummyTheme.LIGHT
-
-    CompositionLocalProvider(
-        DummyThemeLocal provides theme
-    ) {
-        println("CompositionLocalProvider")
-        BottomSheetNavigator {
-            println("BottomSheetNavigator")
-            println(DummyThemeLocal.current)
-            Navigator(screen = object : Screen {
-                @Composable
-                override fun Content() = Unit
-            }) { navigator ->
-                println("Navigator")
-                println(DummyThemeLocal.current)
-            }
-        }
-    }
+    AlkaaMultiplatformApp()
 }

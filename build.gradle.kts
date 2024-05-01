@@ -22,6 +22,19 @@ allprojects {
         google()
         mavenCentral()
     }
+
+    configurations.all {
+        resolutionStrategy.eachDependency {
+            if (requested.module.group == "org.jetbrains.compose.runtime") {
+                if (requested.module.name == "runtime") {
+//                    println("Requested version: ${requested.version}")
+                    useVersion("1.6.10-beta03")
+                }
+                //val version = findDefaultVersionInCatalog(requested.group, requested.name)
+                //because(version.because)
+            }
+        }
+    }
 }
 
 tasks.withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
