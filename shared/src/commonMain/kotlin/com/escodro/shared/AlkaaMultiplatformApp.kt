@@ -14,17 +14,7 @@ import com.escodro.designsystem.AlkaaTheme
 import com.escodro.navigation.NavigationAction
 import com.escodro.shared.model.AppThemeOptions
 import com.escodro.shared.navigation.AlkaaNavGraph
-import com.escodro.shared.navigation.DummThemeLocal
-import com.escodro.shared.navigation.DummyTheme
 import org.koin.compose.koinInject
-
-enum class DummyTheme {
-    DARK, LIGHT, UNKNOWN
-}
-
-val DummThemeLocal = staticCompositionLocalOf {
-    DummyTheme.UNKNOWN
-}
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
@@ -33,22 +23,6 @@ fun AlkaaMultiplatformApp(
     modifier: Modifier = Modifier,
     onThemeUpdate: (isDarkTheme: Boolean) -> Unit = {},
 ) {
-    val theme = if (isSystemInDarkTheme()) DummyTheme.DARK else DummyTheme.LIGHT
-    println(theme)
-
-    CompositionLocalProvider(
-        DummThemeLocal provides theme
-    ) {
-        BottomSheetNavigator(modifier = modifier) {
-            println(DummThemeLocal.current)
-            Navigator(screen = object : Screen {
-                @Composable
-                override fun Content() = Unit
-            }) { navigator ->
-                println(DummThemeLocal.current)
-            }
-        }
-    }
 }
 
 @Composable
